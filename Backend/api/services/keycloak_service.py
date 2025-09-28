@@ -2,6 +2,8 @@ from fastapi import HTTPException, status
 from keycloak.exceptions import KeycloakAuthenticationError
 from ..core.config import keycloak_openid
 from ..repository.schemas.keycloak import UserInfo
+import requests
+from ..core.config import Settings
 
 
 class AuthService:

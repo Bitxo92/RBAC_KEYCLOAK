@@ -1,10 +1,6 @@
-from fastapi import Depends, HTTPException, status, Form
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi import HTTPException, status, Form
 from ..repository.schemas.keycloak import TokenResponse, UserInfo
 from ..services.keycloak_service import AuthService
-
-# Initialize HTTPBearer security dependency
-bearer_scheme = HTTPBearer()
 
 
 class AuthController:
@@ -55,9 +51,7 @@ class AuthController:
         return TokenResponse(access_token=access_token)
 
     @staticmethod
-    def protected_endpoint(
-        credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
-    ) -> UserInfo:
+    def protected_endpoint(token: str) -> UserInfo:
         """
         Access a protected resource that requires valid token authentication.
 
@@ -70,9 +64,6 @@ class AuthController:
         Returns:
             UserInfo: Information about the authenticated user.
         """
-        # Extract the bearer token from the provided credentials
-        token = credentials.credentials
-
         # Verify the token and get user information
         user_info = AuthService.verify_token(token)
 
