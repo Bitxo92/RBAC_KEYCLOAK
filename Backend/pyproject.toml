@@ -1,0 +1,27 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Alejandro Patiño García",email = "alexpatino92@yahoo.com"}
+]
+readme = "README.md"
+package-mode= "false"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "fastapi (>=0.117.1,<0.118.0)",
+    "python-jose (>=3.5.0,<4.0.0)",
+    "bcrypt (>=5.0.0,<6.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "httpx (>=0.26.0,<0.27.0)",
+    "uvicorn (>=0.37.0,<0.38.0)",
+    "pydantic-settings (>=2.11.0,<3.0.0)",
+    "python-keycloak (>=5.8.1,<6.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
